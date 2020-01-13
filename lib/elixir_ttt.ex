@@ -15,4 +15,8 @@ defmodule ElixirTtt do
   def hello do
     :world
   end
+
+  def hello_name(name) do
+    "Hello, " <> name <> "!"
+  end
 end
