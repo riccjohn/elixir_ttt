@@ -3,18 +3,18 @@ defmodule Board do
     %{
       :next_player => :x,
       :board => %{
-        {0, 0} => nil, {1, 0} =>  nil, {2, 0} => nil,
-        {0, 1} => nil, {1, 1} =>  nil, {2, 1} => nil,
-        {0, 2} => nil, {1, 2} =>  nil, {2, 2} => nil
+        0 => 0, 1 =>  1, 2 => 2,
+        3 => 3, 4 =>  4, 5 => 5,
+        6 => 6, 7 =>  7, 8 => 8
       }
     }
   end
 
-  def take_turn(game_state, coordinates) do
+  def take_turn(game_state, square_index) do
     current_board = game_state.board
     current_player = game_state.next_player
 
-    new_board = %{ current_board | coordinates => current_player }
+    new_board = %{ current_board | square_index => current_player }
     new_player = switch_player current_player
 
     %{ game_state | :next_player => new_player, :board => new_board }

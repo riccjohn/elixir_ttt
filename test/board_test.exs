@@ -25,20 +25,20 @@ defmodule BoardTest do
       assert (map_size board) == 9
     end
 
-    test "creates a board with tuples as keys" do
+    test "new_game creates a board with numbers as keys" do
       game = Board.new_game
       board = game.board
       keys = Map.keys(board)
-
-      assert Enum.all?(keys, fn key -> is_tuple key end)
+  
+      assert Enum.all?(keys, fn key -> is_number key end)
     end
-
-    test "creates a board with each square set as nil" do
+  
+    test "creates a board with numbers 0 - 8 as the values" do
       game = Board.new_game
-      board = game.board 
-
+      board = game.board
       values = Map.values(board)
-      assert Enum.all?(values, fn value -> value == nil end)
+  
+      assert values == Enum.to_list 0..8
     end
   end
 
@@ -48,22 +48,22 @@ defmodule BoardTest do
     test "returns a new game state with data added to the correct square" do
       game = Board.new_game
 
-      updated_board = Board.take_turn(game, {1, 1}).board
+      updated_board = Board.take_turn(game, 4).board
 
-      assert Map.fetch(updated_board, {1, 1}) == {:ok, :x}
+      assert Map.fetch(updated_board, 4) == {:ok, :x}
     end
 
     test "switches player to O after placing X's move" do
       game = Board.new_game
-      updated_game = Board.take_turn(game, {0, 0})
+      updated_game = Board.take_turn(game, 0)
 
       assert Map.fetch(updated_game, :next_player) == {:ok, :o}
     end
 
     test "switches player to X after placing O's move" do
       new_game = Board.new_game
-      x_turn_state = Board.take_turn(new_game, {0, 0})
-      o_turn_state = Board.take_turn(x_turn_state, {1, 1})
+      x_turn_state = Board.take_turn(new_game, 0)
+      o_turn_state = Board.take_turn(x_turn_state, 4)
       
       assert Map.fetch(o_turn_state, :next_player) == {:ok, :x}
     end
