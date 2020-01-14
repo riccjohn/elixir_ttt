@@ -15,19 +15,19 @@ defmodule BoardTest do
     assert (map_size board) == 9
   end
 
-  test "new_game creates a board with tuples as keys" do
+  test "new_game creates a board with numbers as keys" do
     game = Board.new_game
     board = game.board
     keys = Map.keys(board)
 
-    assert Enum.all?(keys, fn key -> is_tuple key end)
+    assert Enum.all?(keys, fn key -> is_number key end)
   end
 
-  test "new_game creates a board with each square set as nil" do
+  test "creates a board with numbers 0 - 8 as the values" do
     game = Board.new_game
-    board = game.board 
-
+    board = game.board
     values = Map.values(board)
-    assert Enum.all?(values, fn value -> value == nil end)
+
+    assert values == Enum.to_list 0..8 
   end
 end
