@@ -37,6 +37,10 @@ defmodule WinDetection do
     end
   end
 
+  def detect_diagonal_win(board) do
+    {left_diag, _} = Map.split(board, [0, 4, 8])
+  end
+
   def count_unique_values(map) do
     map |> Map.values |> Enum.uniq |> length
   end

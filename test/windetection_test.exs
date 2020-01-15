@@ -52,7 +52,7 @@ defmodule WinDetectionTest do
   
       assert :true == result
     end
-    
+
     test "will detect a win if there are 3 x's in the bottom row" do
       x_win_state = %{
         :next_player => :x,
@@ -130,6 +130,25 @@ defmodule WinDetectionTest do
       }
 
       result = WinDetection.detect_column_win(x_win_state.board)
+      assert :true = result
+    end
+  end
+
+  describe "detect_diagonal_win" do
+    @describetag win_detection: "diagonal"
+
+    test "will detect 3 x's top left to bottom right" do
+      x_win_state = %{
+        :next_player => :x,
+        :board => %{
+          0 => :x, 1 => 1, 2 => :o,
+          3 => 3, 4 =>  :x, 5 => :o,
+          6 => 6, 7 => 7, 8 => :x
+        },
+        :status => {:ok}
+      }
+
+      result = WinDetection.detect_diagonal_win(x_win_state.board)
       assert :true = result
     end
   end
