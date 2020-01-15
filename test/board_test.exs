@@ -74,7 +74,7 @@ defmodule BoardTest do
       o_turn_state = Board.take_turn(x_turn_state, 0)
 
       assert {:ok, :o} == Map.fetch(o_turn_state, :next_player)
-      assert {:ok, :x} == Map.fetch(o_turn_state, 0)
+      assert {:ok, :x} == Map.fetch(o_turn_state.board, 0)
     end
   end
 end

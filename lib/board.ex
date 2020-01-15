@@ -14,10 +14,18 @@ defmodule Board do
     current_board = game_state.board
     current_player = game_state.next_player
 
-    new_board = %{ current_board | square_index => current_player }
-    new_player = switch_player current_player
+    {:ok, value} = Map.fetch(current_board, square_index)
 
-    %{ game_state | :next_player => new_player, :board => new_board }
+    if (is_integer value) do
+      new_board = %{ current_board | square_index => current_player }
+      new_player = switch_player current_player
+  
+      %{ game_state | :next_player => new_player, :board => new_board }
+    else
+      # TODO: maybe this should add error to the game_state so UI can alert player
+      game_state
+    end
+
   end
 
   def switch_player(:x), do: :o
