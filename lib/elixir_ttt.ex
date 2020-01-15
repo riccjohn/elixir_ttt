@@ -1,22 +1,10 @@
-defmodule ElixirTtt do
-  @moduledoc """
-  Documentation for ElixirTtt.
-  """
+board =
+  Board.new()
+  |> Board.take_turn(:x, 5)
+  |> Board.take_turn(:o, 1)
+  |> Board.take_turn(:x, 2)
+  |> Board.take_turn(:o, 4)
+  |> Board.take_turn(:x, 9)
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> ElixirTtt.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
-
-  def hello_name(name) do
-    "Hello, " <> name <> "!"
-  end
-end
+board_string = UI.format_board(board)
+IO.puts(board_string)
