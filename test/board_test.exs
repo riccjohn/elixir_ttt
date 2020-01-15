@@ -13,6 +13,12 @@ defmodule BoardTest do
       assert game.board
     end
 
+    test "creates data with an initial status" do
+      game = Board.new_game
+      
+      assert {:ok} == game.status
+    end
+
     test "creates data with the next player set to X" do
       game = Board.new_game
       assert :x == game.next_player
