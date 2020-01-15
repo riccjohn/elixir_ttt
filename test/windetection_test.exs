@@ -36,38 +36,38 @@ defmodule WinDetectionTest do
 
       assert :true == result
     end
-  end
 
-  test "will detect a win if there are 3 x's in the middle row" do
-    x_win_state = %{
-      :next_player => :x,
-      :board => %{
-        0 => :o, 1 => 1, 2 => :o,
-        3 => :x, 4 =>  :x, 5 => :x,
-        6 => 6, 7 =>  7, 8 => 8
-      },
-      :status => {:ok}
-    }
-
-    result = WinDetection.detect_row_win(x_win_state.board)
-
-    assert :true == result
-  end
-
-  test "will detect a win if there are 3 x's in the bottom row" do
-    x_win_state = %{
-      :next_player => :x,
-      :board => %{
-        0 => :o, 1 => 1, 2 => :o,
-        3 => 3, 4 =>  4, 5 => 5,
-        6 => :x, 7 => :x, 8 => :x
-      },
-      :status => {:ok}
-    }
-
-    result = WinDetection.detect_row_win(x_win_state.board)
-
-    assert :true == result
+    test "will detect a win if there are 3 x's in the middle row" do
+      x_win_state = %{
+        :next_player => :x,
+        :board => %{
+          0 => :o, 1 => 1, 2 => :o,
+          3 => :x, 4 =>  :x, 5 => :x,
+          6 => 6, 7 =>  7, 8 => 8
+        },
+        :status => {:ok}
+      }
+  
+      result = WinDetection.detect_row_win(x_win_state.board)
+  
+      assert :true == result
+    end
+    
+    test "will detect a win if there are 3 x's in the bottom row" do
+      x_win_state = %{
+        :next_player => :x,
+        :board => %{
+          0 => :o, 1 => 1, 2 => :o,
+          3 => 3, 4 =>  4, 5 => 5,
+          6 => :x, 7 => :x, 8 => :x
+        },
+        :status => {:ok}
+      }
+  
+      result = WinDetection.detect_row_win(x_win_state.board)
+  
+      assert :true == result
+    end
   end
 
   describe "detect_column_win" do
