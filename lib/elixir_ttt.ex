@@ -1,10 +1,10 @@
 board =
   Board.new()
-  |> Board.take_turn(:x, 5)
-  |> Board.take_turn(:o, 1)
-  |> Board.take_turn(:x, 2)
-  |> Board.take_turn(:o, 4)
-  |> Board.take_turn(:x, 9)
+  |> Board.place_marker(:x, 5)
+  |> Board.place_marker(:o, 1)
+  |> Board.place_marker(:x, 2)
+  |> Board.place_marker(:o, 4)
+  |> Board.place_marker(:x, 9)
 
 board_string = UI.format_board(board)
 IO.puts(board_string)

@@ -3,7 +3,7 @@ defmodule Board do
     %{}
   end
 
-  def take_turn(board, player, square_index) do
+  def place_marker(board, player, square_index) do
     Map.put(board, square_index, player)
   end
 

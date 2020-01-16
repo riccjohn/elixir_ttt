@@ -2,13 +2,13 @@ defmodule BoardTest do
   use ExUnit.Case
   @moduletag :board
 
-  describe "take_turn" do
-    @describetag board: "take_turn"
+  describe "place_marker" do
+    @describetag board: "place_marker"
 
     test "records a player's move on the board" do
       board =
         Board.new()
-        |> Board.take_turn(:x, 5)
+        |> Board.place_marker(:x, 5)
 
       assert Board.player_at(board, 5) == :x
     end
@@ -16,8 +16,8 @@ defmodule BoardTest do
     test "can handle multiple players" do
       board =
         Board.new()
-        |> Board.take_turn(:x, 5)
-        |> Board.take_turn(:o, 1)
+        |> Board.place_marker(:x, 5)
+        |> Board.place_marker(:o, 1)
 
       assert :x == Board.player_at(board, 5)
       assert :o == Board.player_at(board, 1)
@@ -32,10 +32,10 @@ defmodule BoardTest do
     test "can handle multiple turns per player" do
       board =
         Board.new()
-        |> Board.take_turn(:x, 5)
-        |> Board.take_turn(:o, 1)
-        |> Board.take_turn(:x, 3)
-        |> Board.take_turn(:o, 7)
+        |> Board.place_marker(:x, 5)
+        |> Board.place_marker(:o, 1)
+        |> Board.place_marker(:x, 3)
+        |> Board.place_marker(:o, 7)
 
       assert :x == Board.player_at(board, 5)
       assert :x == Board.player_at(board, 3)
@@ -46,8 +46,8 @@ defmodule BoardTest do
     test "will overwrite an occupied square" do
       board =
         Board.new()
-        |> Board.take_turn(:x, 5)
-        |> Board.take_turn(:o, 5)
+        |> Board.place_marker(:x, 5)
+        |> Board.place_marker(:o, 5)
 
       assert :o == Board.player_at(board, 5)
     end
