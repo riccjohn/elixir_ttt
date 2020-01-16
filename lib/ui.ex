@@ -2,26 +2,28 @@ defmodule UI do
   def format_board(board) do
     values = [1, 2, 3, "\n", 4, 5, 6, "\n", 7, 8, 9]
 
-    x_spaces = board.x
-    o_spaces = board.o
+    Enum.map(values, fn value ->
+      cond do
+        value == "\n" ->
+          "\n"
 
-    with_input =
-      Enum.map(values, fn value ->
-        cond do
-          Enum.member?(x_spaces, value) ->
-            "X "
+        true ->
+          Board.player_at(board, value)
+          |> convert_to_char(value)
+      end
+    end)
+    |> Enum.join("")
+  end
 
-          Enum.member?(o_spaces, value) ->
-            "O "
+  defp convert_to_char(:x, _) do
+    "X "
+  end
 
-          value == "\n" ->
-            value
+  defp convert_to_char(:o, _) do
+    "O "
+  end
 
-          true ->
-            "#{value} "
-        end
-      end)
-
-    Enum.join(with_input, "")
+  defp convert_to_char(_, value) do
+    "#{value} "
   end
 end

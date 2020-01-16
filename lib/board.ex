@@ -1,18 +1,13 @@
 defmodule Board do
   def new do
-    %{
-      :x => [],
-      :o => []
-    }
+    %{}
   end
 
   def take_turn(board, player, square_index) do
-    occupied_squares = Map.get(board, :x) ++ Map.get(board, :o)
+    Map.put(board, square_index, player)
+  end
 
-    if Enum.member?(occupied_squares, square_index) do
-      {:error, :space_occupied}
-    else
-      %{board | player => board[player] ++ [square_index]}
-    end
+  def player_at(board, square_index) do
+    board[square_index]
   end
 end
