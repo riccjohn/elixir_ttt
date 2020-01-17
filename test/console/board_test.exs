@@ -2,8 +2,8 @@ defmodule TicTacToe.Console.BoardTest do
   use ExUnit.Case
   @moduletag :TicTacToeConsoleBoard
 
-  describe "format_board" do
-    @describetag TicTacToeConsoleBoard: "format_board"
+  describe "format" do
+    @describetag TicTacToeConsoleBoard: "format"
 
     test "will draw an empty board given a newly created board map" do
       board_data = TicTacToe.Core.Board.new()
