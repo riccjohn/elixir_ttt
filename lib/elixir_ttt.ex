@@ -1,10 +1,10 @@
 board =
-  Board.new()
-  |> Board.place_marker(:x, 5)
-  |> Board.place_marker(:o, 1)
-  |> Board.place_marker(:x, 2)
-  |> Board.place_marker(:o, 4)
-  |> Board.place_marker(:x, 9)
+  TicTacToe.Core.Board.new()
+  |> TicTacToe.Core.Board.place_marker(:x, 5)
+  |> TicTacToe.Core.Board.place_marker(:o, 1)
+  |> TicTacToe.Core.Board.place_marker(:x, 2)
+  |> TicTacToe.Core.Board.place_marker(:o, 4)
+  |> TicTacToe.Core.Board.place_marker(:x, 9)
 
-board_string = UI.format_board(board)
+board_string = TicTacToe.Console.Board.format(board)
 IO.puts(board_string)

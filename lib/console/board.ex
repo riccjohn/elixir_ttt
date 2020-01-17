@@ -1,5 +1,5 @@
-defmodule UI do
-  def format_board(board) do
+defmodule TicTacToe.Console.Board do
+  def format(board) do
     values = [1, 2, 3, "\n", 4, 5, 6, "\n", 7, 8, 9]
 
     Enum.map(values, fn value ->
@@ -8,7 +8,7 @@ defmodule UI do
           "\n"
 
         true ->
-          Board.player_at(board, value)
+          TicTacToe.Core.Board.player_at(board, value)
           |> convert_to_char(value)
       end
     end)
