@@ -1,4 +1,4 @@
-defmodule Board do
+defmodule TicTacToe.Core.Board do
   def new do
     %{}
   end
