@@ -10,7 +10,7 @@ defmodule TicTacToeTest do
 
     test "creates a new game" do
       capture_io(fn ->
-        new_game = TicTacToe.start
+        new_game = TicTacToe.start()
 
         assert new_game.board
         assert new_game.next_player

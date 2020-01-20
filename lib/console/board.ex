@@ -18,7 +18,7 @@ defmodule TicTacToe.Console.Board do
   def get_square_for_turn do
     IO.gets("Player X. Choose a square: ")
     |> String.trim("\n")
-    |> String.to_integer
+    |> String.to_integer()
   end
 
   def print(board) do

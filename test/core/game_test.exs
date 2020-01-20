@@ -21,11 +21,11 @@ defmodule TicTacToe.Core.GameTest do
     @describetag TicTacToeCoreGame: "take_turn"
 
     test "places a marker at the correct square" do
-        game =
-          Game.new()
-          |> Game.take_turn(5)
+      game =
+        Game.new()
+        |> Game.take_turn(5)
 
-        assert :x == Board.player_at(game.board, 5)
+      assert :x == Board.player_at(game.board, 5)
     end
 
     test "switches game to next player" do
