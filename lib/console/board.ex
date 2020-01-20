@@ -15,6 +15,12 @@ defmodule TicTacToe.Console.Board do
     |> Enum.join("")
   end
 
+  def get_square_for_turn do
+    IO.gets("Player X. Choose a square: ")
+    |> String.trim("\n")
+    |> String.to_integer
+  end
+
   def print(board) do
     board_string = format(board)
     IO.puts(board_string)
