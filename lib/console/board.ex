@@ -15,6 +15,11 @@ defmodule TicTacToe.Console.Board do
     |> Enum.join("")
   end
 
+  def print(board) do
+    board_string = format(board)
+    IO.puts(board_string)
+  end
+
   defp convert_to_char(:x, _) do
     "X "
   end
