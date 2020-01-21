@@ -1,4 +1,7 @@
 defmodule TicTacToe.Console.Board do
+  alias TicTacToe.Core.Board, as: Board
+  alias TicTacToe.Console.Output, as: Output
+
   def format(board) do
     values = [1, 2, 3, "\n", 4, 5, 6, "\n", 7, 8, 9]
 
@@ -8,16 +11,16 @@ defmodule TicTacToe.Console.Board do
           "\n"
 
         true ->
-          TicTacToe.Core.Board.player_at(board, value)
+          Board.player_at(board, value)
           |> convert_to_char(value)
       end
     end)
     |> Enum.join("")
   end
 
-  def print(board) do
+  def print_formatted(board) do
     board_string = format(board)
-    IO.puts(board_string)
+    Output.print(board_string)
   end
 
   defp convert_to_char(:x, _) do

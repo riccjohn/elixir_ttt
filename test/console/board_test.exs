@@ -1,5 +1,6 @@
 defmodule TicTacToe.Console.BoardTest do
   use ExUnit.Case
+  import ExUnit.CaptureIO
 
   alias TicTacToe.Console.Board, as: ConsoleBoard
   alias TicTacToe.Core.Board, as: Board
@@ -36,6 +37,18 @@ defmodule TicTacToe.Console.BoardTest do
 
       board_string = ConsoleBoard.format(board)
       assert "O X 3 \nO X 6 \n7 8 X " == board_string
+    end
+  end
+
+  describe "print_formatted" do
+    @describetag TicTacToeConsoleBoard: "print_formatted"
+
+    test "will format and print a given board" do
+      board = Board.new()
+
+      output = capture_io(fn -> ConsoleBoard.print_formatted(board) end)
+
+      assert "1 2 3 \n4 5 6 \n7 8 9 \n" == output
     end
   end
 end

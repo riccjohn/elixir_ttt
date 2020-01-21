@@ -5,10 +5,10 @@ defmodule TicTacToe do
 
   def main(_) do
     game = Game.new()
-    Board.print(game.board)
+    Board.print_formatted(game.board)
     move = Input.get_square_for_turn(game.next_player)
     updated_game = Game.take_turn(game, move)
-    Board.print(updated_game.board)
+    Board.print_formatted(updated_game.board)
     updated_game
   end
 end
