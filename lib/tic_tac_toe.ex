@@ -17,6 +17,7 @@ defmodule TicTacToe do
 
   def play_next_round(game, _status) do
     move = Input.get_square_for_turn(game.next_player)
+
     updated_game = Game.take_turn(game, move)
 
     print_formatted(updated_game.board)
