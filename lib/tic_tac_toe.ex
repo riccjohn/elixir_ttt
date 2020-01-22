@@ -7,15 +7,18 @@ defmodule TicTacToe do
   def main(_) do
     game = Game.new()
 
-    formatted_new_board = Board.format(game.board)
-    Output.print(formatted_new_board)
+    print_formatted(game.board)
 
     move = Input.get_square_for_turn(game.next_player)
     updated_game = Game.take_turn(game, move)
 
-    formatted_board = Board.format(updated_game.board)
-    Output.print(formatted_board)
+    print_formatted(updated_game.board)
 
     updated_game
+  end
+
+  defp print_formatted(board) do
+    Board.format(board)
+    |> Output.print()
   end
 end
