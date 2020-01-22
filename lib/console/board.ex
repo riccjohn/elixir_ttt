@@ -1,4 +1,6 @@
 defmodule TicTacToe.Console.Board do
+  alias TicTacToe.Core.Board, as: Board
+
   def format(board) do
     values = [1, 2, 3, "\n", 4, 5, 6, "\n", 7, 8, 9]
 
@@ -8,7 +10,7 @@ defmodule TicTacToe.Console.Board do
           "\n"
 
         true ->
-          TicTacToe.Core.Board.player_at(board, value)
+          Board.player_at(board, value)
           |> convert_to_char(value)
       end
     end)

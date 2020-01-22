@@ -8,14 +8,29 @@ Tic-tac-toe with a command-line interface
 
 Clone repo
 
-```
+```zsh
 git clone git@github.com:riccjohn/elixir_ttt.git
+```
+
+## Running the game
+
+To generate and run the executable
+
+```zsh
+# Generate executable
+mix escript.build
+
+# Make file executable
+chmod +x tic_tac_toe
+
+# Run it
+./tic_tac_toe
 ```
 
 ## Tests
 
 Run tests
 
-```
+```zsh
 mix test
 ```
