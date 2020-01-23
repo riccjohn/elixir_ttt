@@ -6,22 +6,23 @@ defmodule TicTacToe do
 
   def main(_) do
     game = Game.new()
-
-    print_formatted(game.board)
-    play_next_round(game, game.status)
+    loop(game)
   end
 
-  def play_next_round(game, status) when status != {:ok} do
+  def loop(game) do
     print_formatted(game.board)
-  end
-
-  def play_next_round(game, _status) do
     move = Input.get_square_for_turn(game.next_player)
-    updated_game = Game.take_turn(game, move)
+    updated_game = play_next_round(game, move)
 
-    print_formatted(updated_game.board)
+    if game.status != {:ok} do
+      Output.print("GAME OVER")
+    else
+      loop(updated_game)
+    end
+  end
 
-    play_next_round(updated_game, updated_game.status)
+  def play_next_round(game, square_index) do
+    Game.take_turn(game, square_index)
   end
 
   defp print_formatted(board) do
